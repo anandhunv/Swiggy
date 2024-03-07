@@ -12,6 +12,7 @@
     justify-content: space-between;
     border: 1px solid black;
     margin: 10px;
+    
 }
 
 .logo-container{
@@ -115,4 +116,24 @@ padding: 5px;
 
 .cusines{
     font-size: 14px;
+}
+.filter{
+    display: flex;
+    margin-left: 50px;
+}
+
+.filter-btn{
+    border: rgb(198, 198, 198) 1px solid;
+    outline: none;
+    padding: 10px;
+    background-color: rgb(255, 255, 255);
+    color: rgb(0, 0, 0);
+    border-radius: 50px;
+    cursor: pointer;
+    font-weight: bold;
+    
+}
+
+.filter-btn:hover{
+    background-color: rgb(242, 242, 242);
 }
