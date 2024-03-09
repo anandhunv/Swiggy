@@ -1,7 +1,9 @@
 import img1 from "/images/swigy_logo.png"
+import { useState } from "react";
 
 
 export const Header=()=>{
+    const [btnName,setbtnName]=useState("Login");
     return(
         <div className="header">
 
@@ -15,7 +17,11 @@ export const Header=()=>{
                     <li>About Us</li>
                     <li>Contact</li>
                     <li>Cart</li>
+                    <button className="log-in" onClick={()=>{
 
+                       btnName==="Login"?setbtnName("Logout"):setbtnName("Login")
+                        console.log(btnName);
+                    }}>{btnName}</button>
                 </ul>
             </div>
         </div>
