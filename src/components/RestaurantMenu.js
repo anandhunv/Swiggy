@@ -6,7 +6,6 @@ import { MENU_ITEMS_IMAGE } from "../utils/constants";
 
 
 const RestaurantMenu=()=>{
-
     const [resInfo,setOfResInfo]=useState(null);
     const {resId}=useParams();
     
@@ -69,15 +68,11 @@ const RestaurantMenu=()=>{
 <div className="menu_img_container">
 <img className="menu_img" src={MENU_ITEMS_IMAGE + item.card.info.imageId}/>
 </div>
-
-
 </div>
-               
-            ))}
+))}
 
-
+</div>  
 </div>
-        </div>
     )
 }
 

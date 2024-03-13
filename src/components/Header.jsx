@@ -1,8 +1,9 @@
 import { Link } from "react-router-dom";
-import img1 from "/images/swigy_logo.png"
+// import img1 from "/images/swigy_logo.png"
+
 import { useState,useEffect } from "react";
 
-
+const logo= require("/images/swigy_logo.png");
 export const Header=()=>{
     const [btnName,setbtnName]=useState("Login");
 
@@ -18,7 +19,7 @@ export const Header=()=>{
 
 
             <div className="logo-container">
-            <img  className="logo" src={img1}/>
+            <img  className="logo" src={logo}/>
             </div>
 
             <div className="nav-items">

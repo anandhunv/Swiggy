@@ -7,6 +7,8 @@ import { Link } from "react-router-dom";
 
 const Body=()=>{
     console.log("body renendered");
+    console.log(useState());
+
 
     const [listOfRestaurent,setlistOfRestaurent]=useState([]);
     const [filteredRestaurent,setFilteredRestaurent]=useState([]);
