@@ -3,6 +3,7 @@ import Shimmer from "./Shimmer";
 import { API_URL } from "../utils/constants";
 import { useState,useEffect } from "react";
 import { Link } from "react-router-dom";
+import useOnlineStatus from "../utils/useOnlineStatus";
 
 
 const Body=()=>{
@@ -40,6 +41,15 @@ const Body=()=>{
     // if(listOfRestaurent.length===0){
     //     return <Shimmer/>
     // }
+
+  const onlineStatus = useOnlineStatus();
+  if(onlineStatus===false)
+            return(
+        <h1>Your are in offline</h1>       
+            )
+        
+
+
 
     return listOfRestaurent.length===0?<Shimmer/>:  (    
 

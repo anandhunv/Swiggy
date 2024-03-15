@@ -4,8 +4,14 @@ import { Link } from "react-router-dom";
 import { useState,useEffect } from "react";
 
 const logo= require("/images/swigy_logo.png");
+import useOnlineStatus from "../utils/useOnlineStatus";
+
+
+
 export const Header=()=>{
     const [btnName,setbtnName]=useState("Login");
+
+    const onlineStatus= useOnlineStatus();
 
 
 
@@ -24,10 +30,12 @@ export const Header=()=>{
 
             <div className="nav-items">
                 <ul>
+                    <li>{onlineStatus?"online":"offline "}</li>
                     <li><Link to="/">Home</Link></li>   
                     <li><Link to="/about">About Us</Link></li>
                     <li><Link to="/contact">Contact</Link></li>
                     <li><Link to="/">Cart</Link></li>
+                    <li><Link to="/grocery">Grocery</Link></li>
                     <button className="log-in" onClick={()=>{
 
                        btnName==="Login"?setbtnName("Logout"):setbtnName("Login")
