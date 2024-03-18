@@ -31,6 +31,7 @@ const Body=()=>{
         setFilteredRestaurent(json?.data?.cards[4]?.card?.card?.gridElements?.infoWithStyle?.restaurants)
         
         console.log(listOfRestaurent);
+        console.log("above is data");
 
     }
    
@@ -53,40 +54,47 @@ const Body=()=>{
 
     return listOfRestaurent.length===0?<Shimmer/>:  (    
 
-        <div className="body">
+        <div className="body p-6 mx-14 mt-8  flex  flex-col">
+
             <div className="filter">
-                <div className="search">
-                    <input type="text" id="search-box" className="search-box" value={searchText} onChange={(e)=>{
+
+                <div className="search mb-5 flex justify-center">
+                    <input type="text" id="search-box" className="search-box border-b border-solid border-gray-400 outline-none w-96 h-8  mr-5 p-2" placeholder="Type The Restaurent.." value={searchText} onChange={(e)=>{
                         setSearchText(e.target.value)
 
                     }}/>
-                    <button onClick={()=>{
+                    <button className="bg-gray-300 px-5 py-1 outline-none rounded-md" onClick={()=>{
                         {console.log(searchText);}
 
-                   const filteredRest= listOfRestaurent.filter((res)=>res.info.name.toLowerCase().includes(searchText.toLowerCase()))
+                   const filteredRest = listOfRestaurent.filter((res)=>res.info.name.toLowerCase().includes(searchText.toLowerCase()));
+                    
+                 setFilteredRestaurent(filteredRest);}}>Search</button>
 
-                   setFilteredRestaurent(filteredRest); 
-
-
-
-                    }}>Search</button>
                 </div>
-                <button className="filter-btn" onClick={()=>{
+
+                <div>
+                <button className="filter-btn  mb-10 px-5 mt-8 py-1 border border-solid border-gray-200 rounded-3xl mr-4" onClick={()=>{
 
 
                     const filteredList=listOfRestaurent.filter(
                         (res)=>res.info.avgRatingString > 4.5 )
 
                         setFilteredRestaurent(filteredList)
-                }}>Click for Top Rated Restaurant</button>
+                }}>Top Rated</button>
+                 <button className="filter-btn  mb-10 px-5 mt-8 py-1 border border-solid border-gray-200 rounded-3xl  mr-4">Less than 300Rs</button>
+                 <button className="filter-btn  mb-10 px-5 mt-8 py-1 border border-solid border-gray-200 rounded-3xl  mr-4">Fast Delivery</button>
+               
+                 </div>
             </div>
-            <div className="restuarent-container">
+            
+            <div className="restuarent-container flex  justify-start items-center pl-6 flex-wrap  overflow-hidden">
 
                {filteredRestaurent.map((restaurent)=>(
               <Link key={restaurent.info.id}  to={"/restaurant/"+restaurent.info.id}>  <RestaurentCard resData={restaurent}/></Link>
                ))}
 
             </div>
+            
         </div>
  
     )

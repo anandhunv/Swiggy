@@ -22,7 +22,7 @@ class About extends Component{
         return(
 
             <div>
-                <h1>THis is About</h1>
+                <h1 className="font-extrabold text-[40px] flex justify-center items-center mx-24">About Us</h1>
                 <UserClass  name={"Angel Di Maria"} location={"Benfica"}/>
             </div>
         )

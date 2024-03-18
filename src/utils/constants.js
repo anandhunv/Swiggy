@@ -2,6 +2,8 @@ export const CDN_URL="https://media-assets.swiggy.com/swiggy/image/upload/fl_los
 
 export const MENU_ITEMS_IMAGE="https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_1024/"
 
+export const GROCERY_IMG="https://wpamelia.com/wp-content/uploads/2019/04/vague.jpg"
+
 export const API_URL="https://www.swiggy.com/dapi/restaurants/list/v5?lat=12.9715987&lng=77.5945627&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING"
 
 

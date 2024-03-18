@@ -21,21 +21,21 @@ export const Header=()=>{
     },[btnName]);
 
     return(
-        <div className="header">
+        <div className="flex justify-between p-4 shadow-lg shadow- mb-4">
 
 
             <div className="logo-container">
-            <img  className="logo" src={logo}/>
+            <img  className="w-44" src={logo}/>
             </div>
 
-            <div className="nav-items">
-                <ul>
-                    <li>{onlineStatus?"online":"offline "}</li>
-                    <li><Link to="/">Home</Link></li>   
-                    <li><Link to="/about">About Us</Link></li>
-                    <li><Link to="/contact">Contact</Link></li>
-                    <li><Link to="/">Cart</Link></li>
-                    <li><Link to="/grocery">Grocery</Link></li>
+            <div  className="flex  items-center">
+                <ul className="flex text-lg font-medium">
+                    <li className="mr-10">{onlineStatus?"online":"offline "}</li>
+                    <li className="mr-10"><Link to="/">Home</Link></li>   
+                    <li className="mr-10"><Link to="/about">About Us</Link></li>
+                    <li className="mr-10"><Link to="/contact">Contact</Link></li>
+                    <li className="mr-10"><Link to="/">Cart</Link></li>
+                    <li className="mr-10"><Link to="/grocery">Grocery</Link></li>
                     <button className="log-in" onClick={()=>{
 
                        btnName==="Login"?setbtnName("Logout"):setbtnName("Login")

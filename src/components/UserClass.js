@@ -1,5 +1,6 @@
 import React from "react";
 import Shimmer from "./Shimmer";
+import ShimmerAbout from "./ShimmerAbout";
 
 class UserClass extends React.Component{
 
@@ -40,9 +41,11 @@ class UserClass extends React.Component{
         const {name,location,bio,avatar_url}=this.state.userInfo;
 
 
-        return <div className="user-card">
-         <img className="about-img" src={avatar_url}/>
-         <div>
+        return this.state.userInfo.length===0?<ShimmerAbout/>: <div className="user-card flex rounded-3xl mt-10 mx-48 border border-solid border-gray-900">
+            <div>
+         <img className="about-img rounded-3xl w-56 " src={avatar_url}/>
+         </div>
+         <div className="p-5">
         <h2>Name:{name}</h2>
         <p>Location:{location}</p>
         <p>Bio:{bio}</p>
