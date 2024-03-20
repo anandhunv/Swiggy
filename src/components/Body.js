@@ -1,4 +1,5 @@
 import RestaurentCard from "./RestaurentCard ";
+import { withVegLabel } from "./VegLabel";
 import Shimmer from "./Shimmer";
 import { API_URL } from "../utils/constants";
 import { useState,useEffect } from "react";
@@ -15,6 +16,8 @@ const Body=()=>{
     const [filteredRestaurent,setFilteredRestaurent]=useState([]);
 
     const [searchText,setSearchText]=useState("");
+
+    const RestaurantCardVeg=withVegLabel(RestaurentCard); 
     
 
     useEffect(()=>{
@@ -87,10 +90,14 @@ const Body=()=>{
                  </div>
             </div>
             
-            <div className="restuarent-container flex  justify-start items-center pl-6 flex-wrap  overflow-hidden">
+            <div className="restuarent-container flex  justify-start items-center pl-6 flex-wrap  ">
 
                {filteredRestaurent.map((restaurent)=>(
-              <Link key={restaurent.info.id}  to={"/restaurant/"+restaurent.info.id}>  <RestaurentCard resData={restaurent}/></Link>
+              <Link key={restaurent.info.id}  to={"/restaurant/"+restaurent.info.id}>  
+              
+              {restaurent.info.veg?< RestaurantCardVeg  resData={restaurent}/>:  
+              <RestaurentCard resData={restaurent}/>}
+             </Link>
                ))}
 
             </div>

@@ -8,9 +8,9 @@ const RestaurentCard =(props)=>{
     const {name,cuisines,avgRatingString,cloudinaryImageId,costForTwo,areaName}=resData?.info;
     const{slaString}=resData?.info?.sla;
      return(
-         <div className="res-card flex    w-[250px] overflow-hidden  flex-col m-2 rounded-3xl  transition-transform duration-300 transform hover:scale-95 " >
-             <div className="img-container relative w-[250px] h-[150px]  overflow-hidden flex  rounded-3xl items-end scale-[290px] shadow-md shadow-gray-300 ">
-             <img className="res-img relative w-[250px] h-[160px]   rounded-3xl " src={CDN_URL+cloudinaryImageId}/>
+         <div className="res-card flex    w-[250px]   flex-col m-2 rounded-3xl  transition-transform duration-300 transform hover:scale-95 relative  " >
+             <div className="img-container  w-[250px] h-[150px]  overflow-hidden flex  rounded-3xl items-end scale-[290px] shadow-md shadow-gray-300 relative">
+             <img className="res-img  w-[250px] h-[160px]   rounded-3xl relative " src={CDN_URL+cloudinaryImageId}/>
 
                {/* <div className="overlay absolute mt-3  flex  justify-center    w-full  bg-gradient-to-b from-transparent via-transparent to-gray-900 dark:to-gray-900"><h1 className="font-extrabold text-[28px]  text-zinc-50">{costForTwo}</h1></div> */}
              </div>
@@ -22,10 +22,13 @@ const RestaurentCard =(props)=>{
              <p className="area text-[15px]">{areaName}</p>
 
               </div>
-              
+
  
          </div>
      )
  }
 
+ 
+
+ export default RestaurentCard;
  

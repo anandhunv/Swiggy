@@ -2,6 +2,8 @@ import { useParams } from "react-router-dom";
 import { MENU_ITEMS_IMAGE } from "../utils/constants";
 import useRestaurentMenuData from "../utils/useRestaurentMenuData";
 import ShimmerMenu from "./ShimmerMenu";
+import RestaurantAccordianceCategory from "./RestaurantAccordianceCategory";
+
 
 
 const RestaurantMenu=()=>{
@@ -17,6 +19,11 @@ const RestaurantMenu=()=>{
     const {itemCards,title}= resInfo?.cards[2]?.groupedCard?.cardGroupMap?.REGULAR?.cards[2]?.card?.card|| {};
     console.log(itemCards);
 
+    console.log(resInfo?.cards[2]?.groupedCard?.cardGroupMap?.REGULAR?.cards);
+    const categories=resInfo?.cards[2]?.groupedCard?.cardGroupMap?.REGULAR?.cards.filter(c=>c.card?.card?.["@type"]==="type.googleapis.com/swiggy.presentation.food.v2.ItemCategory"              )
+    console.log(categories);
+
+
     
 
     return (
@@ -31,6 +38,7 @@ const RestaurantMenu=()=>{
             <p className="text-zinc-600 text-[14px] mt-2 mb-4">{message}</p>
             </div>
             <div className="menu_rating ">
+
                 
                 <h3 className="border border-solid border-stone-300 h-7 p-1 flex items-center justify-center ">{avgRatingString}</h3>
                 <h3 className="border border-solid border-stone-300  border-t-0 h-10 p-1 text-[12px] flex items-center">{totalRatingsString}</h3>
@@ -39,27 +47,18 @@ const RestaurantMenu=()=>{
            
 
             </div>
+            <div >
+            {categories.map((category)=> {
+                return(
+                    <RestaurantAccordianceCategory key={category?.card?.card?.title} data={category?.card?.card} />
+            )}
 
-            <div className="recommended flex flex-col mt-10 ">
-            <h2 className="font-extrabold">{title}</h2>
+                )
+            }
+            </div>
 
-           {itemCards.map((item)=>(
-
-<div className="flex justify-between mt-4 border-b border-solid border-neutral-400">
-
-<div key={item.card.info.id} className="item ">
-<p className="font-semibold  text-stone-800">{item.card.info.name}</p>
-<p className="font-medium text-[15px] text-stone-800 mt-1">{item.card.info.price / 100}.Rs</p>
-<p className="description  w-[600px] text-[12px] text-stone-500">{item.card.info.description}</p>
-</div>
-<div className="menu_img_container w-32 p-5">
-<img className="menu_img w-32 " src={MENU_ITEMS_IMAGE + item.card.info.imageId}/>
-</div>
-</div>
-))}
-
-</div>  
-</div>
+           
+        </div>
     )
 }
 
