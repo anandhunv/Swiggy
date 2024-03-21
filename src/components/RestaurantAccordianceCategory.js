@@ -1,22 +1,21 @@
-import { useState } from "react";
 import MenuList from "./MenuList";
 
-const RestaurantAccordianceCategory =({data})=>{
-  const [showItems,setShowItems]=  useState(false)
-
+const RestaurantAccordianceCategory =({data,showItems,setShowIndex})=>{
     const {title,itemCards}=data
     const length=itemCards.length;
 
     const handleClick=()=>{
 
-        setShowItems(!showItems);
-    }
 
+    setShowIndex()
+       
+    }
+ 
     return (
         <div>
-        <div className=" flex justify-between mt-9 cursor-pointer " onClick={handleClick}>
+        <div className=" flex justify-between mt-9 cursor-pointer " onClick={handleClick} >
                 <span className="font-extrabold  text-gray-900 mb-2">{title}({length})</span>
-            <span className="font-medium" ><i className="fa-solid fa-angle-down"></i></span>
+            <span className="font-medium" >{showItems ?<i className="fa-solid fa-angle-down"></i>:<i className="fa-solid fa-angle-up"></i>}</span>
             </div>
 
             <div className=" flex flex-col mt-7 ">
@@ -33,4 +32,4 @@ const RestaurantAccordianceCategory =({data})=>{
 
 }
 
-export default RestaurantAccordianceCategory
+export default RestaurantAccordianceCategory;

@@ -3,18 +3,20 @@ import { MENU_ITEMS_IMAGE } from "../utils/constants";
 import useRestaurentMenuData from "../utils/useRestaurentMenuData";
 import ShimmerMenu from "./ShimmerMenu";
 import RestaurantAccordianceCategory from "./RestaurantAccordianceCategory";
+import { useState } from "react";
 
 
 
 const RestaurantMenu=()=>{
     const {resId}=useParams();
     const resInfo= useRestaurentMenuData(resId);
+    const [showIndex,setShowIndex]=useState(null);
     
     if(resInfo === null){
         return <ShimmerMenu/>
     }
     console.log(resInfo);
-    const { name, areaName,cuisines, avgRatingString,totalRatingsString    } = resInfo?.cards[0]?.card?.card?.info || {};
+    const { name, areaName,cuisines, avgRatingString,totalRatingsString,} = resInfo?.cards[0]?.card?.card?.info || {};
     const{message}=resInfo?.cards[0]?.card?.card?.info?.feeDetails|| {};
     const {itemCards,title}= resInfo?.cards[2]?.groupedCard?.cardGroupMap?.REGULAR?.cards[2]?.card?.card|| {};
     console.log(itemCards);
@@ -48,9 +50,19 @@ const RestaurantMenu=()=>{
 
             </div>
             <div >
-            {categories.map((category)=> {
+            {categories.map((category,index)=> {
+                //controlled component
                 return(
-                    <RestaurantAccordianceCategory key={category?.card?.card?.title} data={category?.card?.card} />
+                    <RestaurantAccordianceCategory
+
+                     key={category?.card?.card?.title} 
+                     data={category?.card?.card} 
+
+                     showItems={index === showIndex ? true : false}
+                    
+                     setShowIndex={()=>setShowIndex(index)}
+                    
+                    />
             )}
 
                 )
