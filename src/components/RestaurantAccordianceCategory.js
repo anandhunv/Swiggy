@@ -1,13 +1,17 @@
 import MenuList from "./MenuList";
 
+
 const RestaurantAccordianceCategory =({data,showItems,setShowIndex})=>{
     const {title,itemCards}=data
     const length=itemCards.length;
 
+    
+
     const handleClick=()=>{
 
 
-    setShowIndex()
+    setShowIndex(showItems?true:false)
+    
        
     }
  

@@ -1,9 +1,8 @@
 import { useParams } from "react-router-dom";
-import { MENU_ITEMS_IMAGE } from "../utils/constants";
 import useRestaurentMenuData from "../utils/useRestaurentMenuData";
 import ShimmerMenu from "./ShimmerMenu";
 import RestaurantAccordianceCategory from "./RestaurantAccordianceCategory";
-import { useState } from "react";
+import {  useState } from "react";
 
 
 
@@ -11,13 +10,16 @@ const RestaurantMenu=()=>{
     const {resId}=useParams();
     const resInfo= useRestaurentMenuData(resId);
     const [showIndex,setShowIndex]=useState(null);
+
+
+
+    
     
     if(resInfo === null){
         return <ShimmerMenu/>
     }
     console.log(resInfo);
-    const { name, areaName,cuisines, avgRatingString,totalRatingsString,} = resInfo?.cards[0]?.card?.card?.info || {};
-    const{message}=resInfo?.cards[0]?.card?.card?.info?.feeDetails|| {};
+    const { name, areaName,cuisines, avgRatingString,totalRatingsString,message} = resInfo?.cards[0]?.card?.card?.info || {};
     const {itemCards,title}= resInfo?.cards[2]?.groupedCard?.cardGroupMap?.REGULAR?.cards[2]?.card?.card|| {};
     console.log(itemCards);
 
@@ -34,10 +36,13 @@ const RestaurantMenu=()=>{
             <div className="rest-details flex  justify-between border-b border-dashed border-gray-300 ">
                <div>
             <h3 className="font-extrabold ">{name}</h3>
+            
             <p className="text-zinc-600 mt-3 text-[14px]">{cuisines.join(",")}</p> 
 
             <p className="text-zinc-600 text-[14px]">{areaName}</p>
             <p className="text-zinc-600 text-[14px] mt-2 mb-4">{message}</p>
+
+            
             </div>
             <div className="menu_rating ">
 
@@ -58,10 +63,10 @@ const RestaurantMenu=()=>{
                      key={category?.card?.card?.title} 
                      data={category?.card?.card} 
 
-                     showItems={index === showIndex ? true : false}
+                     showItems={index === showIndex}
                     
                      setShowIndex={()=>setShowIndex(index)}
-                    
+
                     />
             )}
 

@@ -40,3 +40,14 @@ written by facebook developers
 2 important reacr hooks
 -useState()-superpowerful state variables in react
 -useEffect()
+
+
+## Redux Toolkits
+
+-Install @reduxjs/toolkit and react-redux (These are tw  o libraries we install)
+ --npm install @reduxjs/toolkit
+ --npm i react-redux
+-Connect our store to our app 
+-create slice (cart slice) to add items to cart
+- dispatch(action)
+-selector

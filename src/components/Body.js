@@ -2,15 +2,13 @@ import RestaurentCard from "./RestaurentCard ";
 import { withVegLabel } from "./VegLabel";
 import Shimmer from "./Shimmer";
 import { API_URL } from "../utils/constants";
-import { useState,useEffect } from "react";
+import { useState,useEffect,useContext } from "react";
 import { Link } from "react-router-dom";
 import useOnlineStatus from "../utils/useOnlineStatus";
+import UserContext from "../utils/UserContext";
 
 
 const Body=()=>{
-    console.log("body renendered");
-    console.log(useState());
-
 
     const [listOfRestaurent,setlistOfRestaurent]=useState([]);
     const [filteredRestaurent,setFilteredRestaurent]=useState([]);
@@ -18,6 +16,7 @@ const Body=()=>{
     const [searchText,setSearchText]=useState("");
 
     const RestaurantCardVeg=withVegLabel(RestaurentCard); 
+    const {loggedIn,setUserName}=useContext(UserContext);
     
 
     useEffect(()=>{
@@ -33,7 +32,6 @@ const Body=()=>{
         setlistOfRestaurent(json?.data?.cards[4]?.card?.card?.gridElements?.infoWithStyle?.restaurants)
         setFilteredRestaurent(json?.data?.cards[4]?.card?.card?.gridElements?.infoWithStyle?.restaurants)
         
-        console.log(listOfRestaurent);
         console.log("above is data");
 
     }
@@ -62,7 +60,8 @@ const Body=()=>{
             <div className="filter">
 
                 <div className="search mb-5 flex justify-center">
-                    <input type="text" id="search-box" className="search-box border-b border-solid border-gray-400 outline-none w-96 h-8  mr-5 p-2" placeholder="Type The Restaurent.." value={searchText} onChange={(e)=>{
+                    <input type="text" id="search-box" className="search-box border-b border-solid border-gray-400 outline-none w-96 h-8  mr-5 p-2" placeholder="Type The Restaurent.."
+                     value={searchText} onChange={(e)=>{
                         setSearchText(e.target.value)
 
                     }}/>
@@ -75,6 +74,7 @@ const Body=()=>{
 
                 </div>
 
+
                 <div>
                 <button className="filter-btn  mb-10 px-5 mt-8 py-1 border border-solid border-gray-200 rounded-3xl mr-4" onClick={()=>{
 
@@ -86,6 +86,12 @@ const Body=()=>{
                 }}>Top Rated</button>
                  <button className="filter-btn  mb-10 px-5 mt-8 py-1 border border-solid border-gray-200 rounded-3xl  mr-4">Less than 300Rs</button>
                  <button className="filter-btn  mb-10 px-5 mt-8 py-1 border border-solid border-gray-200 rounded-3xl  mr-4">Fast Delivery</button>
+
+
+                 
+                 <input type="text" id="search-box" className="search-box border border-solid border-gray-400 outline-none w-40 h-8  mr-5 p-2" value={loggedIn} onChange={(e)=>{setUserName(e.target.value)}}/>
+                 <button className="bg-gray-300 px-5 py-1 outline-none rounded-md"  >Add</button>
+
                
                  </div>
             </div>
