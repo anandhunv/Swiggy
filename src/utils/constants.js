@@ -9,3 +9,4 @@ export const API_URL="https://www.swiggy.com/dapi/restaurants/list/v5?lat=12.971
 
 export const API_MENU_URL="https://www.swiggy.com/dapi/menu/pl?page-type=REGULAR_MENU&complete-menu=true&lat=12.9715987&lng=77.5945627&restaurantId=";
 
+export const CART_EMPTY="https://i.pinimg.com/originals/c6/0f/ea/c60fea3ac3aab2e82c2f7ea901ef55f6.jpg"

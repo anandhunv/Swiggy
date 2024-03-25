@@ -16,6 +16,7 @@ const Body=()=>{
     const [searchText,setSearchText]=useState("");
 
     const RestaurantCardVeg=withVegLabel(RestaurentCard); 
+    
     const {loggedIn,setUserName}=useContext(UserContext);
     
 

@@ -1,11 +1,11 @@
 import { Link } from "react-router-dom";
 // import img1 from "/images/swigy_logo.png"
-
 import { useState,useEffect,useContext } from "react";
-
 const logo= require("/images/swigy_logo.png");
 import useOnlineStatus from "../utils/useOnlineStatus";
 import UserContext from "../utils/UserContext";
+import { useSelector } from "react-redux";
+
 
 
 
@@ -15,18 +15,24 @@ export const Header=()=>{
     const onlineStatus= useOnlineStatus();
 
     const loginData= useContext(UserContext)
-    console.log(loginData);
+
+    // console.log(loginData);
+
     const {loggedIn}=loginData
+
+    //subscribing  to the store using the Selector
+    const cartItems= useSelector((store)=>store.cart.items)
+    console.log(cartItems);
 
 
 
 
     useEffect(()=>{
-        console.log("useEffect Called");
+        // console.log("useEffect Called");
     },[btnName]);
 
     return(
-        <div className="flex justify-between p-4 shadow-lg shadow- mb-4">
+        <div className="flex justify-between p-4 shadow-lg shadow-mb-4">
 
 
             <div className="logo-container">
@@ -39,7 +45,11 @@ export const Header=()=>{
                     <li className="mr-10"><Link to="/">Home</Link></li>   
                     <li className="mr-10"><Link to="/about">About Us</Link></li>
                     <li className="mr-10"><Link to="/contact">Contact</Link></li>
-                    <li className="mr-10"><Link to="/">Cart</Link></li>
+
+
+                    <li className="mr-10"><Link to="/cart">Cart ({cartItems.length} items)</Link></li>
+
+
                     <li className="mr-10"><Link to="/grocery">Grocery</Link></li>
                     <button className="log-in mr-10" onClick={()=>{
 
