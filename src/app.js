@@ -12,7 +12,7 @@ import UserContext from "./utils/UserContext";
 import { Provider } from "react-redux";
 import appStore from "./utils/appStore";
 import Cart from "./components/Cart";
-
+import { GIT_HUB } from "./utils/constants";
 const Grocery= lazy(()=>import("./components/Grocery"))
 
 
@@ -30,11 +30,15 @@ const AppLayout=()=>{
 
     },[])
     const fetchData=async()=>{
-
-        const data= await fetch("  https://api.github.com/users/anandhunv");
-        const json =await data.json();
-        setUserName(json.name)
-    }
+        try {
+            const response = await fetch(GIT_HUB);
+            const json = await response.json();
+            setUserName(json.name);
+          } catch (error) {
+            console.error("Error fetching data:", error);
+          }
+        };
+    
 
 
 

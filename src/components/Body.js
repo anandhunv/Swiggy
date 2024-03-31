@@ -33,7 +33,6 @@ const Body=()=>{
         setlistOfRestaurent(json?.data?.cards[4]?.card?.card?.gridElements?.infoWithStyle?.restaurants)
         setFilteredRestaurent(json?.data?.cards[4]?.card?.card?.gridElements?.infoWithStyle?.restaurants)
         
-        console.log("above is data");
 
     }
    
@@ -61,7 +60,7 @@ const Body=()=>{
             <div className="filter">
 
                 <div className="search mb-5 flex justify-center">
-                    <input type="text" id="search-box" className="search-box border-b border-solid border-gray-400 outline-none w-96 h-8  mr-5 p-2" placeholder="Type The Restaurent.."
+                    <input type="text" data-testid="searchInputbox" className="search-box border-b border-solid border-gray-400 outline-none w-96 h-8  mr-5 p-2" placeholder="Type The Restaurent.."
                      value={searchText} onChange={(e)=>{
                         setSearchText(e.target.value)
 
@@ -97,13 +96,13 @@ const Body=()=>{
                  </div>
             </div>
             
-            <div className="restuarent-container flex  justify-start items-center pl-6 flex-wrap  ">
+            <div data-testid="rescard" className="restuarent-container flex  justify-start items-center pl-6 flex-wrap  ">
 
                {filteredRestaurent.map((restaurent)=>(
               <Link key={restaurent.info.id}  to={"/restaurant/"+restaurent.info.id}>  
               
-              {restaurent.info.veg?< RestaurantCardVeg  resData={restaurent}/>:  
-              <RestaurentCard resData={restaurent}/>}
+              {restaurent.info.veg?< RestaurantCardVeg  resData={restaurent.info}/>:  
+              <RestaurentCard resData={restaurent?.info}/>}
              </Link>
                ))}
 

@@ -21,7 +21,9 @@ const MenuList=({items})=>{
 
 <div  key={item.card.info.id} className="flex justify-between mt-4 border-b border-solid border-bg-slate-300">
 
-   <div  className="item ">
+   <div  
+        data-testid="fooditems"
+        className="item ">
         <p className="name font-medium  text-stone-800">{item.card.info.name}</p>
         <p className="price font-normal text-[15px] text-stone-800 ">₹{item.card.info.price?  item.card.info.price/100 : item.card.info.defaultPrice /100}</p>
         <p className="description  w-[600px] text-[12px] text-stone-500 mt-6 mb-6">{item.card.info.description}</p>

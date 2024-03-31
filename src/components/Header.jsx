@@ -1,7 +1,9 @@
 import { Link } from "react-router-dom";
-// import img1 from "/images/swigy_logo.png"
+import img1 from "/images/swigy_logo.png"
 import { useState,useEffect,useContext } from "react";
-const logo= require("/images/swigy_logo.png");
+// const img1= require("/images/swigy_logo.png");
+// import img1 from "../../public/images/swigy_logo.png";
+
 import useOnlineStatus from "../utils/useOnlineStatus";
 import UserContext from "../utils/UserContext";
 import { useSelector } from "react-redux";
@@ -22,7 +24,7 @@ export const Header=()=>{
 
     //subscribing  to the store using the Selector
     const cartItems= useSelector((store)=>store.cart.items)
-    console.log(cartItems);
+    // console.log(cartItems);
 
 
 
@@ -36,7 +38,7 @@ export const Header=()=>{
 
 
             <div className="logo-container">
-            <img  className="w-44" src={logo}/>
+            <img  className="w-44" src={img1}/>
             </div>
 
             <div  className="flex  items-center">
@@ -54,7 +56,7 @@ export const Header=()=>{
                     <button className="log-in mr-10" onClick={()=>{
 
                        btnName==="Login"?setbtnName("Logout"):setbtnName("Login")
-                        console.log(btnName);
+                        // console.log(btnName);
                     }}>{btnName}</button>
                     <li className="mr-10 text-lime-600"><Link to="">{loggedIn}</Link></li>
 

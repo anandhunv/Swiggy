@@ -44,10 +44,76 @@ written by facebook developers
 
 ## Redux Toolkits
 
--Install @reduxjs/toolkit and react-redux (These are tw  o libraries we install)
+-Install @reduxjs/toolkit and react-redux (These are tw o libraries we install)
  --npm install @reduxjs/toolkit
  --npm i react-redux
 -Connect our store to our app 
 -create slice (cart slice) to add items to cart
 - dispatch(action)
 -selector
+
+
+##  setting up testing in our app
+
+-install  react testing library
+
+npm install -D @testing-library/react
+
+-install jest(jest website)
+
+npm install -D  jest
+
+-install Babel dependencies(jest website-using babel)
+
+npm install --save-dev babel-jest @babel/core @babel/preset-env
+
+-configure babel
+
+babel.config.js(@root level)
+>>>>
+module.exports = {
+  presets: [['@babel/preset-env', {targets: {node: 'current'}}]],
+};
+
+-configure parcel config file to disable default  babel transpilation
+
+(parcel website => javascript => babel)
+
+create .parcelrc file
+>>>>
+{
+  "extends": "@parcel/config-default",
+  "transformers": {
+    "*.{js,mjs,jsx,cjs,ts,tsx}": [
+      "@parcel/transformer-js",
+      "@parcel/transformer-react-refresh-wrap"
+    ]
+  }
+}
+
+- jest configuration
+
+npx jest --init
+
+-install jsdom library
+
+React Testing Library => setup => jest28
+
+npm install -D jest-environment-jsdom
+
+
+-install @babel/preset-react => to make JSX to work in test cases
+
+npm i -D @babel/preset-react
+
+
+-include @babel/preset-react  inside my babel.config.js
+
+-install a library for toBeInTheDocument
+
+npm i -D @testing-library/jest-dom
+
+
+
+
+

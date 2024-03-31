@@ -19,12 +19,12 @@ const RestaurantMenu=()=>{
         return <ShimmerMenu/>
     }
     console.log(resInfo);
-    const { name, areaName,cuisines, avgRatingString,totalRatingsString,message} = resInfo?.cards[0]?.card?.card?.info || {};
+    const { name, areaName,cuisines, avgRatingString,totalRatingsString,message} = resInfo?.cards[2]?.card?.card?.info || {};
     const {itemCards,title}= resInfo?.cards[2]?.groupedCard?.cardGroupMap?.REGULAR?.cards[2]?.card?.card|| {};
     console.log(itemCards);
 
     console.log(resInfo?.cards[2]?.groupedCard?.cardGroupMap?.REGULAR?.cards);
-    const categories=resInfo?.cards[2]?.groupedCard?.cardGroupMap?.REGULAR?.cards.filter(c=>c.card?.card?.["@type"]==="type.googleapis.com/swiggy.presentation.food.v2.ItemCategory"              )
+    const categories=resInfo?.cards[4]?.groupedCard?.cardGroupMap?.REGULAR?.cards.filter(c=>c.card?.card?.["@type"]==="type.googleapis.com/swiggy.presentation.food.v2.ItemCategory"    )
     console.log(categories);
 
 

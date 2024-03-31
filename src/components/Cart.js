@@ -52,7 +52,7 @@ const Cart = ()=>{
              </div>
              </div>
 
-            <div className="right w-1/2 ml-10  ">
+            <div className="right w-1/2 ml-10  " data-testId="cartItems">
 
         {cartItems.length===0 && (<div className="bg-white p-5 h-80 flex justify-center items-center flex-col">
 
